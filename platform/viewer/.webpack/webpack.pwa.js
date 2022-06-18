@@ -108,13 +108,14 @@ module.exports = (env, argv) => {
           PUBLIC_URL: PUBLIC_URL,
         },
       }),
-      // No longer maintained; but good for generating icons + manifest
-      // new FaviconsWebpackPlugin( path.join(PUBLIC_DIR, 'assets', 'icons-512.png')),
+      // Generate a service worker for fast local loads
       new InjectManifest({
         swDest: 'sw.js',
         swSrc: path.join(SRC_DIR, 'service-worker.js'),
         // Increase the limit to 4mb:
-        maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+        // Need to exclude the theme as it is updated independently
+        exclude: [/theme/],
       }),
       new CopyPlugin({
         patterns: [

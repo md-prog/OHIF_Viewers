@@ -125,11 +125,12 @@ function modeFactory({ modeConfiguration }) {
       study: [],
       series: [],
     },
+
     isValidMode: ({ modalities }) => {
       const modalities_list = modalities.split('\\');
 
-      // Slide Microscopy and ECG modality not supported by basic mode yet
-      return !modalities_list.includes('SM') && !modalities_list.includes('ECG');
+      // Slide Microscopy modality not supported by basic mode yet
+      return !!modalities_list.filter(modality => modality != 'SM').length;
     },
     routes: [
       {

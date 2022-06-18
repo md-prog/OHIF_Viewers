@@ -1,0 +1,21 @@
+{
+  // Includes a number of definitions about how to configure new modes and
+  // dynamically load extensions for those modes
+
+  ConfigurableModes: {
+    modes: {
+      "ecgMode": { configOperation: "reference", source: "ecgMode"},
+      "mprMode": { configOperation: "reference", source: "mprMode"},
+    },
+  },
+
+  mprMode: {
+    configBase: "configMode",
+
+    id: "mpr",
+    route: "mpr",
+    routeName: "mpr",
+    displayName: "Volume",
+  }
+
+}
