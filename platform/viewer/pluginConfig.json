@@ -31,6 +31,14 @@
     {
       "packageName": "@ohif/extension-tmtv",
       "version": "3.0.0"
+    },
+    {
+      "packageName": "@radical/mpr-extension",
+      "version": "3.0.1"
+    },
+    {
+      "packageName": "@radical/microscopy-dicom",
+      "version": "3.0.0"
     }
   ],
   "modes": [
@@ -48,10 +56,6 @@
   "importer": [
     {
       "packageName": "@radical/ecg-dicom",
-      "version": "3.0.1"
-    },
-    {
-      "packageName": "@radical/mpr-extension",
       "version": "3.0.1"
     }
   ]

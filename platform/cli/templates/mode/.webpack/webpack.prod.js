@@ -30,11 +30,11 @@ const config = {
   module: {
     rules: [
       {
-        test: /(\.jsx|\.js)$/,
+        test: /(\.jsx|\.js|\.tsx|\.ts)$/,
         loader: 'babel-loader',
         exclude: /(node_modules|bower_components)/,
         resolve: {
-          extensions: ['.js', '.jsx'],
+          extensions: ['.js', '.jsx', '.ts', '.tsx',],
         },
       },
     ],

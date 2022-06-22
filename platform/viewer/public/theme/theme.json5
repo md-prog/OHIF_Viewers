@@ -1,3 +1,44 @@
 {
-  // Currently empty because nothing is configurable yet with themes
+  // Includes a number of definitions about how to configure new modes and
+  // dynamically load extensions for those modes
+
+  ConfigurableModes: {
+    modes: {
+      "ecgMode": { configOperation: "reference", source: "ecgMode"},
+      "mprMode": { configOperation: "reference", source: "mprMode"},
+      "microscopyMode": { configOperation: "reference", source: "microscopyMode"},
+    },
+  },
+
+  mprMode: {
+    configBase: "configMode",
+
+    id: "mpr",
+    route: "mpr",
+    routeName: "mpr",
+    displayName: "Volume",
+    hangingProtocols: [
+      '@radical/mpr-extension.hangingProtocolModule.mpr',
+      '@ohif/extension-default.hangingProtocolModule.default',
+      ],
+  },
+
+  microscopyMode: {
+    configBase: "configMode",
+
+    id: "microscopy",
+    route: "microscopy",
+    routeName: "microscopy",
+    displayName: "Microscopy",
+
+    sopClassHandlers: [
+      "@radical/microscopy-dicom.sopClassHandlerModule.DicomMicroscopySopClassHandler",
+    ],
+
+    // Need to define a second function because the original value of the first one is already present, so it
+    // uses the original value as the replacement text.  TODO - fix in config-point
+    isValidModeFunc: {configOperation: 'safe', value: 'modalities.indexOf("SM")!=-1'},
+    isValidMode: {configOperation: 'reference', reference: 'isValidModeFunc'},
+  }
+
 }

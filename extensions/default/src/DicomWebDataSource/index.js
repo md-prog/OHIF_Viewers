@@ -81,6 +81,7 @@ function createDicomWebApi(dicomWebConfig, UserAuthenticationService) {
     ? new StaticWadoClient(qidoConfig)
     : new api.DICOMwebClient(qidoConfig);
   const wadoDicomWebClient = new api.DICOMwebClient(wadoConfig);
+  wadoDicomWebClient.wadoURL = wadoRoot;
 
   const implementation = {
     initialize: ({ params, query }) => {
@@ -228,6 +229,7 @@ function createDicomWebApi(dicomWebConfig, UserAuthenticationService) {
         }
         throw new Error('BulkDataURI in unknown format:' + BulkDataURI);
       },
+      dicomWebClient: wadoDicomWebClient,
       series: {
         metadata: async ({
           StudyInstanceUID,

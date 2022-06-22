@@ -18,4 +18,13 @@
     displayName: "Volume",
   }
 
+  microscopyMode: {
+    configBase: "configMode",
+
+    id: "microscopy",
+    route: "microscopy",
+    routeName: "microscopy",
+    displayName: "Microscopy",
+  }
+
 }
